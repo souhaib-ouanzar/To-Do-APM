@@ -23,7 +23,7 @@ public class TaskListFragment extends Fragment {
     private TaskAdapter taskAdapter;
 
     public TaskListFragment() {
-        // Required empty public constructor
+
     }
 
     @Override

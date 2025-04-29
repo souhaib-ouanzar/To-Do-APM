@@ -9,11 +9,12 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="447dp"
-        android:layout_height="892dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="342dp"
+        android:layout_height="787dp"
+        android:layout_marginTop="48dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/first_bg" />

@@ -22,7 +22,7 @@ public class AddTaskFragment extends Fragment {
     private Calendar calendar;
 
     public AddTaskFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
