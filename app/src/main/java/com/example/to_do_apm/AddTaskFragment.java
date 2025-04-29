@@ -37,7 +37,6 @@ public class AddTaskFragment extends Fragment {
 
         calendar = Calendar.getInstance();
 
-        // Set up DatePickerDialog for textViewDate
         textViewDate.setOnClickListener(v -> {
             int year = calendar.get(Calendar.YEAR);
             int month = calendar.get(Calendar.MONTH);
