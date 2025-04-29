@@ -32,4 +32,13 @@
     <string name="supprimer">Supprimer</string>
     <string name="date">Date</string>
     <string name="description_task">Description</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="todo">TODO</string>
+    <string name="add_your_task">Add Your Task</string>
+    <string name="select_date">Select Date</string>
+    <string name="priority_low">Priority: Low</string>
+    <string name="continue_f">continue</string>
 </resources>

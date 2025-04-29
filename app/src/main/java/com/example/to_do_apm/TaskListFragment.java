@@ -1,6 +1,7 @@
 package com.example.to_do_apm;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +21,10 @@ public class TaskListFragment extends Fragment {
     private RecyclerView recyclerView;
     private ConstraintLayout emptyStateContainer;
     private FloatingActionButton floatingActionButton;
+    private FloatingActionButton floatingActionButtonNonEmpty;
     private TaskAdapter taskAdapter;
 
     public TaskListFragment() {
-
     }
 
     @Override
@@ -34,6 +35,7 @@ public class TaskListFragment extends Fragment {
         recyclerView = rootView.findViewById(R.id.recyclerView);
         emptyStateContainer = rootView.findViewById(R.id.emptyStateContainer);
         floatingActionButton = rootView.findViewById(R.id.floatingActionButton);
+        floatingActionButtonNonEmpty = rootView.findViewById(R.id.floatingActionButtonNonEmpty);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         taskAdapter = new TaskAdapter(TaskManager.getTasks());
@@ -42,6 +44,13 @@ public class TaskListFragment extends Fragment {
         updateUI();
 
         floatingActionButton.setOnClickListener(v -> {
+            Log.d("TaskListFragment", "Empty state FAB clicked");
+            NavHostFragment.findNavController(TaskListFragment.this)
+                    .navigate(R.id.action_taskListFragment_to_addTaskFragment);
+        });
+
+        floatingActionButtonNonEmpty.setOnClickListener(v -> {
+            Log.d("TaskListFragment", "Non-empty state FAB clicked");
             NavHostFragment.findNavController(TaskListFragment.this)
                     .navigate(R.id.action_taskListFragment_to_addTaskFragment);
         });
@@ -53,9 +62,12 @@ public class TaskListFragment extends Fragment {
         if (TaskManager.getTasks().isEmpty()) {
             emptyStateContainer.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);
+            floatingActionButtonNonEmpty.setVisibility(View.GONE);
         } else {
             emptyStateContainer.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
+            floatingActionButtonNonEmpty.setVisibility(View.VISIBLE);
+            taskAdapter.notifyDataSetChanged();
         }
     }
 
@@ -78,19 +90,29 @@ public class TaskListFragment extends Fragment {
             holder.textViewTitle.setText(task.getTitle());
             holder.textViewDescription.setText(task.getDescription());
             holder.textViewDate.setText(task.getDate());
+            holder.textViewPriority.setText("Priority: " + task.getPriority());
             holder.checkBox.setChecked(task.isChecked());
 
             holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 TaskManager.toggleTaskStatus(task);
                 notifyItemChanged(position);
+                updateUI();
             });
 
             holder.buttonDelete.setOnClickListener(v -> {
                 TaskManager.removeTask(task);
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, tasks.size());
-                updateUI(); // Update UI after deletion
+                updateUI();
                 Toast.makeText(getContext(), "Task deleted", Toast.LENGTH_SHORT).show();
+            });
+
+            holder.buttonModify.setOnClickListener(v -> {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("task", task);
+                bundle.putInt("position", position);
+                NavHostFragment.findNavController(TaskListFragment.this)
+                        .navigate(R.id.action_taskListFragment_to_addTaskFragment, bundle);
             });
         }
 
@@ -100,17 +122,19 @@ public class TaskListFragment extends Fragment {
         }
 
         class TaskViewHolder extends RecyclerView.ViewHolder {
-            TextView textViewTitle, textViewDescription, textViewDate;
+            TextView textViewTitle, textViewDescription, textViewDate, textViewPriority;
             CheckBox checkBox;
-            Button buttonDelete;
+            Button buttonDelete, buttonModify;
 
             public TaskViewHolder(View itemView) {
                 super(itemView);
                 textViewTitle = itemView.findViewById(R.id.textViewTitle);
                 textViewDescription = itemView.findViewById(R.id.textViewDescription);
                 textViewDate = itemView.findViewById(R.id.textViewDate);
+                textViewPriority = itemView.findViewById(R.id.textViewPriority);
                 checkBox = itemView.findViewById(R.id.checkBox);
                 buttonDelete = itemView.findViewById(R.id.buttonDelete);
+                buttonModify = itemView.findViewById(R.id.buttonModify);
             }
         }
     }

@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Empty State Container -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/emptyStateContainer"
         android:layout_width="0dp"
@@ -19,7 +18,7 @@
             android:id="@+id/textViewEmpty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Your First Task"
+            android:text="@string/add_your_task"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -32,6 +31,7 @@
             android:id="@+id/imageView"
             android:layout_width="239dp"
             android:layout_height="485dp"
+            android:contentDescription="@string/todo"
             app:srcCompat="@drawable/to_do_bg"
             app:layout_constraintTop_toBottomOf="@id/textViewEmpty"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,15 +41,14 @@
             android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/add_task"
+            app:srcCompat="@drawable/plus"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.952"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView"
-            app:srcCompat="@drawable/plus" />
+            app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- RecyclerView for Task List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
@@ -58,6 +57,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonNonEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/add_task"
+        app:srcCompat="@drawable/plus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

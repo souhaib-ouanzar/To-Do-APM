@@ -11,14 +11,12 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        // Find the Continue button
         Button startBtn = findViewById(R.id.startBtn);
 
-        // Set click listener to navigate to LoginActivity
         startBtn.setOnClickListener(v -> {
             Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
             startActivity(intent);
-            finish(); // Close SplashActivity
+            finish();
         });
     }
 }

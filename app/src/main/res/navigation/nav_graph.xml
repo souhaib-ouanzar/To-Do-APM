@@ -7,20 +7,24 @@
     <fragment
         android:id="@+id/taskListFragment"
         android:name="com.example.to_do_apm.TaskListFragment"
-        android:label="Task List">
+        android:label="TaskListFragment">
         <action
             android:id="@+id/action_taskListFragment_to_addTaskFragment"
-            app:destination="@id/addTaskFragment" />
+            app:destination="@id/addTaskFragment"
+            app:popUpTo="@id/taskListFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
         android:id="@+id/addTaskFragment"
         android:name="com.example.to_do_apm.AddTaskFragment"
-        android:label="Add Task">
+        android:label="AddTaskFragment">
         <action
             android:id="@+id/action_addTaskFragment_to_taskListFragment"
             app:destination="@id/taskListFragment"
             app:popUpTo="@id/taskListFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true" />
     </fragment>
+
 </navigation>
