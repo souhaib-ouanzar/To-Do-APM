@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Empty State Container -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/emptyStateContainer"
         android:layout_width="0dp"
@@ -19,23 +19,27 @@
             android:id="@+id/textViewEmpty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="88dp"
             android:text="Add Your First Task"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="100dp"/>
+            app:layout_constraintHorizontal_bias="0.589"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="239dp"
             android:layout_height="485dp"
-            app:srcCompat="@drawable/to_do_bg"
-            app:layout_constraintTop_toBottomOf="@id/textViewEmpty"
+            android:layout_marginTop="60dp"
+            android:contentDescription="@string/todo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.575"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/textViewEmpty"
+            app:srcCompat="@drawable/to_do_bg" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
@@ -49,7 +53,6 @@
             app:srcCompat="@drawable/plus" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- RecyclerView for Task List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"

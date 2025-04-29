@@ -7,7 +7,7 @@
     android:background="@color/background_light"
     tools:context=".LoginActivity">
 
-    <!-- Title at the top -->
+
     <ImageView
         android:id="@+id/login_bg"
         android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Email Field with TextInputLayout -->
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailInputLayout"
         android:layout_width="0dp"
@@ -56,7 +56,7 @@
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Password Field with TextInputLayout -->
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordInputLayout"
         android:layout_width="0dp"
@@ -81,13 +81,11 @@
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Login Button -->
-    <!-- Prevent tinting -->
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/passwordInputLayout" />
 
-    <!-- Progress Indicator for login action -->
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginBtn"
